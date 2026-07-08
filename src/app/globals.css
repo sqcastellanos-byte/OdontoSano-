@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   OdontoSano — sistema de diseño
+   Marca: turquesa #009786 (principal) · azul #0052A1 (acento) · fondos claros
+   ========================================================================== */
+
+@theme {
+  /* Marca */
+  --color-turquesa: #009786;
+  --color-turquesa-600: #007d6f;
+  --color-turquesa-700: #00695f;
+  --color-turquesa-50: #e6f4f2;
+  --color-turquesa-100: #cfe9e5;
+
+  --color-azul: #0052a1;
+  --color-azul-600: #00417f;
+
+  /* Neutros cálidos con leve sesgo turquesa (elegidos, no por defecto) */
+  --color-crema: #fcfbf8;
+  --color-crema-hueso: #f5f3ec;
+  --color-tinta: #14201e;
+  --color-tinta-suave: #55635f;
+  --color-linea: #e7e4dc;
+
+  /* Tipografía: display editorial + sans humanista */
+  --font-display: var(--font-fraunces), "Iowan Old Style", Palatino, Georgia, serif;
+  --font-sans: var(--font-geist-sans), system-ui, "Segoe UI", sans-serif;
+
+  /* Radios y sombras */
+  --radius-marca: 1.25rem;
+  --shadow-suave: 0 1px 2px rgba(20, 32, 30, 0.04), 0 8px 24px -12px rgba(20, 32, 30, 0.12);
+  --shadow-tarjeta: 0 24px 60px -30px rgba(0, 105, 95, 0.28), 0 4px 12px -6px rgba(20, 32, 30, 0.1);
+}
+
+:root {
+  --background: var(--color-crema);
+  --foreground: var(--color-tinta);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Título editorial: equilibra el corte de línea */
+.font-display {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+/* Enlace de navegación con subrayado turquesa animado */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: var(--color-turquesa);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+.nav-underline:hover::after,
+.nav-underline[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Respeto estricto a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Enfoque de teclado visible (accesibilidad) */
+:focus-visible {
+  outline: 2px solid var(--color-turquesa);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Utilidad: patrón de fondo sutil */
+.bg-suave {
+  background-image: radial-gradient(
+      120% 120% at 85% 0%,
+      rgba(0, 151, 134, 0.06),
+      transparent 55%
+    ),
+    linear-gradient(180deg, var(--color-crema), var(--color-crema));
+}
