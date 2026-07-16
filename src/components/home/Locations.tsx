@@ -16,10 +16,7 @@ export function Locations() {
     <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
       <Reveal>
         <div className="max-w-xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-turquesa-700">
-            Nuestras sedes
-          </span>
-          <h2 className="font-display mt-3 text-3xl font-medium leading-tight text-tinta sm:text-4xl">
+          <h2 className="font-display text-3xl font-semibold leading-tight text-tinta sm:text-4xl">
             Cerca de ti, en toda la sierra norte.
           </h2>
           <p className="mt-4 text-lg text-tinta-suave">
@@ -32,7 +29,7 @@ export function Locations() {
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {SEDES.map((s, i) => (
           <Reveal key={s.slug} delay={(i % 4) * 0.06}>
-            <div className="flex h-full flex-col rounded-[var(--radius-marca)] border border-linea bg-white p-6 shadow-suave transition-all duration-300 hover:-translate-y-1 hover:shadow-tarjeta">
+            <div className="flex h-full flex-col rounded-[var(--radius-marca)] border border-linea bg-white p-6 transition-colors duration-300 hover:border-turquesa-100 hover:bg-turquesa-50/50">
               <div className="flex items-center gap-2">
                 <PinIcon />
                 <h3 className="font-display text-xl font-semibold text-tinta">

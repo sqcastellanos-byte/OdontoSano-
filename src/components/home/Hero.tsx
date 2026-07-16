@@ -24,9 +24,9 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h1 className="font-display mt-6 text-4xl font-medium leading-[1.05] tracking-tight text-tinta sm:text-5xl lg:text-6xl">
-              Tu mejor sonrisa, con la calma de estar en{" "}
-              <em className="italic text-turquesa-700">manos expertas</em>.
+            <h1 className="font-display mt-6 text-4xl font-semibold leading-[1.06] text-tinta sm:text-5xl lg:text-[3.4rem]">
+              Tu mejor sonrisa, en{" "}
+              <span className="text-turquesa-700">manos expertas</span>.
             </h1>
           </Reveal>
 
@@ -81,7 +81,7 @@ export function Hero() {
           <div className="relative overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-white shadow-tarjeta">
             <PhotoPlaceholder
               className="aspect-[16/10] w-full"
-              etiqueta="Foto real — paciente sonriendo, luz natural"
+              etiqueta="Foto real: paciente sonriendo con luz natural"
             />
             <div className="p-6 sm:p-7">
               <h2 className="font-display text-xl font-semibold text-tinta">

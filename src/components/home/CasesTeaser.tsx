@@ -9,10 +9,7 @@ export function CasesTeaser() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-24">
         <Reveal>
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-turquesa-700">
-              Casos clínicos reales
-            </span>
-            <h2 className="font-display mt-3 text-3xl font-medium leading-tight text-tinta sm:text-4xl">
+            <h2 className="font-display text-3xl font-semibold leading-tight text-tinta sm:text-4xl">
               Los resultados hablan.{" "}
               <span className="text-turquesa-700">Arrastra y compara.</span>
             </h2>

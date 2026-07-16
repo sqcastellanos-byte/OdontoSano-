@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   OdontoSano — sistema de diseño
-   Marca: turquesa #009786 (principal) · azul #0052A1 (acento) · fondos claros
+   OdontoSano · sistema de diseño
+   Marca: turquesa #009786 (principal), azul #0052A1 (acento), fondos limpios.
+   Tono: clínico, sereno y humano. Sin tarjetas con sombras pesadas.
    ========================================================================== */
 
 @theme {
@@ -10,27 +11,29 @@
   --color-turquesa: #009786;
   --color-turquesa-600: #007d6f;
   --color-turquesa-700: #00695f;
-  --color-turquesa-50: #e6f4f2;
-  --color-turquesa-100: #cfe9e5;
+  --color-turquesa-50: #edf6f4;
+  --color-turquesa-100: #d6ebe7;
 
   --color-azul: #0052a1;
   --color-azul-600: #00417f;
 
-  /* Neutros cálidos con leve sesgo turquesa (elegidos, no por defecto) */
-  --color-crema: #fcfbf8;
-  --color-crema-hueso: #f5f3ec;
-  --color-tinta: #14201e;
-  --color-tinta-suave: #55635f;
-  --color-linea: #e7e4dc;
+  /* Neutros limpios con leve frescura clínica (elegidos, no por defecto) */
+  --color-crema: #f7faf9;
+  --color-crema-hueso: #eef3f1;
+  --color-tinta: #15211f;
+  --color-tinta-suave: #566661;
+  --color-linea: #e2e9e6;
 
-  /* Tipografía: display editorial + sans humanista */
-  --font-display: var(--font-fraunces), "Iowan Old Style", Palatino, Georgia, serif;
-  --font-sans: var(--font-geist-sans), system-ui, "Segoe UI", sans-serif;
+  /* Tipografía sanitaria: una sola familia humanista, jerarquía por peso */
+  --font-display: var(--font-hanken), system-ui, "Segoe UI", sans-serif;
+  --font-sans: var(--font-hanken), system-ui, "Segoe UI", sans-serif;
 
-  /* Radios y sombras */
-  --radius-marca: 1.25rem;
-  --shadow-suave: 0 1px 2px rgba(20, 32, 30, 0.04), 0 8px 24px -12px rgba(20, 32, 30, 0.12);
-  --shadow-tarjeta: 0 24px 60px -30px rgba(0, 105, 95, 0.28), 0 4px 12px -6px rgba(20, 32, 30, 0.1);
+  /* Un solo sistema de radios; botones = píldora, superficies = 14px */
+  --radius-marca: 0.875rem;
+
+  /* Sombras discretas y tintadas al fondo (nada de negro puro) */
+  --shadow-suave: 0 1px 2px rgba(20, 32, 30, 0.03), 0 6px 16px -12px rgba(20, 32, 30, 0.1);
+  --shadow-tarjeta: 0 14px 34px -22px rgba(0, 105, 95, 0.22), 0 2px 8px -5px rgba(20, 32, 30, 0.07);
 }
 
 :root {
@@ -46,10 +49,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Título editorial: equilibra el corte de línea */
+/* Titulares: misma familia, corte de línea equilibrado y tracking ajustado */
 .font-display {
   font-family: var(--font-display);
   text-wrap: balance;
+  letter-spacing: -0.012em;
 }
 
 /* Enlace de navegación con subrayado turquesa animado */
@@ -92,12 +96,12 @@ body {
   border-radius: 4px;
 }
 
-/* Utilidad: patrón de fondo sutil */
+/* Fondo base con una veladura turquesa muy tenue en la parte superior */
 .bg-suave {
+  background-color: var(--color-crema);
   background-image: radial-gradient(
-      120% 120% at 85% 0%,
-      rgba(0, 151, 134, 0.06),
-      transparent 55%
-    ),
-    linear-gradient(180deg, var(--color-crema), var(--color-crema));
+    120% 90% at 88% -10%,
+    rgba(0, 151, 134, 0.05),
+    transparent 60%
+  );
 }
