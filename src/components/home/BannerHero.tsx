@@ -1,12 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 
-// Hero tipo banner estilo Sonría: texto a la izquierda, foto a la derecha
-// enmarcada por arcos turquesa (la firma visual), y accesos a servicios.
+// Hero tipo banner (estilo Sonría): imagen principal a pantalla completa con
+// los arcos turquesa integrados, y el slogan sobre un velo a la izquierda.
 
 function ChipIcon({ name }: { name: string }) {
-  const c = "h-6 w-6";
+  const c = "h-5 w-5";
   if (name === "prevencion")
     return (
       <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -49,46 +48,55 @@ const CHIPS = [
 
 export function BannerHero() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* Veladura turquesa muy tenue de fondo */}
+    <section className="relative min-h-[80svh] w-full overflow-hidden bg-tinta">
+      {/* Imagen principal */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-40 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-turquesa-50 opacity-60 blur-3xl"
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/hero.jpg')" }}
+      />
+      {/* Velo oscuro a la izquierda para legibilidad del texto */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(3,22,34,.92) 0%, rgba(3,22,34,.84) 30%, rgba(3,22,34,.5) 50%, rgba(3,22,34,.12) 66%, rgba(3,22,34,0) 80%)",
+        }}
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:py-20">
-        {/* Texto */}
-        <div className="max-w-xl">
+      <div className="relative mx-auto flex min-h-[80svh] max-w-6xl items-center px-5 py-16 sm:px-8">
+        <div className="max-w-xl text-white">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full bg-turquesa-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-turquesa-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-turquesa" />
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-turquesa-50" />
               Sierra norte del Ecuador
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-display mt-5 text-4xl font-semibold leading-[1.04] text-tinta sm:text-5xl lg:text-6xl">
-              Sonrisas sanas,
+            <h1 className="font-display mt-5 text-4xl font-semibold leading-[1.05] drop-shadow-[0_2px_20px_rgba(0,0,0,.4)] sm:text-6xl lg:text-7xl">
+              Cuidamos tu salud
               <br />
-              <span className="text-azul">vidas más felices</span>
+              <span className="text-turquesa-50">por ti</span>.
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-tinta-suave">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-white/90 drop-shadow-[0_1px_12px_rgba(0,0,0,.4)]">
               Odontología integral para toda tu familia, con especialistas y
               tecnología en Quito, Cayambe, Atuntaqui y Otavalo.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="mt-7 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="#agendar"
-                className="inline-flex h-12 items-center rounded-full bg-turquesa px-7 text-[15px] font-semibold text-white shadow-[0_14px_28px_-14px_rgba(0,120,105,.65)] transition-transform hover:-translate-y-0.5"
+                className="inline-flex h-12 items-center rounded-full bg-turquesa px-7 text-[15px] font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5"
               >
                 Agendar valoración
               </Link>
               <Link
                 href="/casos"
-                className="group inline-flex items-center gap-2 text-[15px] font-semibold text-tinta transition-colors hover:text-turquesa-700"
+                className="group inline-flex items-center gap-2 text-[15px] font-semibold text-white/95 transition-colors hover:text-turquesa-50"
               >
                 Ver casos reales
                 <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -97,14 +105,14 @@ export function BannerHero() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-4 border-t border-linea pt-6">
+            <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-4 border-t border-white/20 pt-6">
               {CHIPS.map((chip) => (
                 <li key={chip.name}>
                   <Link
                     href="/tratamientos"
-                    className="group flex items-center gap-2.5 text-sm font-semibold text-tinta transition-colors hover:text-turquesa-700"
+                    className="group flex items-center gap-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-80"
                   >
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-turquesa-50 text-turquesa-700 transition-colors group-hover:bg-turquesa-100">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-turquesa-50 backdrop-blur-sm">
                       <ChipIcon name={chip.name} />
                     </span>
                     {chip.label}
@@ -114,29 +122,6 @@ export function BannerHero() {
             </ul>
           </Reveal>
         </div>
-
-        {/* Foto enmarcada por arcos turquesa */}
-        <Reveal delay={0.1}>
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            {/* Arco turquesa detrás (firma Sonría) */}
-            <svg
-              aria-hidden
-              className="pointer-events-none absolute -right-5 -top-6 -z-0 h-[112%] w-[112%]"
-              viewBox="0 0 400 400"
-              fill="none"
-            >
-              <circle cx="200" cy="200" r="185" stroke="var(--color-turquesa)" strokeWidth="26" />
-              <circle cx="200" cy="200" r="150" stroke="var(--color-azul)" strokeWidth="16" opacity="0.85" />
-            </svg>
-            <div className="relative overflow-hidden rounded-[2rem] shadow-tarjeta">
-              <img
-                src="/hero.jpg"
-                alt="Familia sonriendo en la clínica dental OdontoSano"
-                className="aspect-[5/4] w-full object-cover object-[70%_center]"
-              />
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

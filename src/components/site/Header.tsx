@@ -36,8 +36,8 @@ export function Header() {
           <Logo />
         </Link>
 
-        {/* Navegación de escritorio */}
-        <nav className="hidden items-center gap-7 lg:flex">
+        {/* Navegación de escritorio (más grande, con flecha al hover) */}
+        <nav className="hidden items-center gap-5 xl:flex">
           {NAV.map((item) => {
             const active =
               item.href === "/"
@@ -48,8 +48,16 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 data-active={active}
-                className="nav-underline text-sm font-medium text-tinta/80 hover:text-tinta transition-colors"
+                className="nav-underline group relative pl-5 text-base font-medium text-tinta/80 transition-colors hover:text-turquesa-700"
               >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 text-turquesa-700 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </span>
                 {item.label}
               </Link>
             );
@@ -70,7 +78,7 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-linea bg-crema/70 text-tinta lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-linea bg-crema/70 text-tinta xl:hidden"
           >
             <span className="relative block h-4 w-5">
               <span
@@ -95,7 +103,7 @@ export function Header() {
 
       {/* Menú móvil desplegable */}
       <div
-        className={`overflow-hidden border-linea bg-crema/95 backdrop-blur-md lg:hidden ${
+        className={`overflow-hidden border-linea bg-crema/95 backdrop-blur-md xl:hidden ${
           open ? "max-h-96 border-b" : "max-h-0"
         } transition-all duration-300`}
       >
