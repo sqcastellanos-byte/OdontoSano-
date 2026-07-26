@@ -17,34 +17,21 @@ export function Hero() {
         {/* Columna editorial */}
         <div>
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-linea bg-white/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-turquesa-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-turquesa" />
-              Red dental · Sierra norte del Ecuador
-            </span>
+            <h2 className="font-display text-3xl font-semibold leading-[1.1] text-tinta sm:text-4xl">
+              Tu valoración, en{" "}
+              <span className="text-turquesa-700">manos expertas</span>.
+            </h2>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h1 className="font-display mt-6 text-4xl font-semibold leading-[1.06] text-tinta sm:text-5xl lg:text-[3.4rem]">
-              Tu mejor sonrisa, en{" "}
-              <span className="text-turquesa-700">manos expertas</span>.
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-tinta-suave">
-              Valoración personalizada en Quito, Cayambe, Atuntaqui y Otavalo.
-              Un diagnóstico claro y un plan pensado para ti.
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-tinta-suave">
+              Atención en Quito, Cayambe, Atuntaqui y Otavalo. Un diagnóstico claro
+              y un plan pensado para ti.
             </p>
           </Reveal>
 
-          <Reveal delay={0.15}>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link
-                href="#agendar"
-                className="inline-flex h-12 items-center rounded-full bg-turquesa px-7 text-[15px] font-semibold text-white shadow-[0_16px_30px_-12px_rgba(0,120,105,.7)] transition-transform hover:-translate-y-0.5 active:translate-y-0"
-              >
-                Agendar valoración
-              </Link>
+          <Reveal delay={0.1}>
+            <div className="mt-7">
               <Link
                 href="/casos"
                 className="group inline-flex items-center gap-2 text-[15px] font-semibold text-tinta transition-colors hover:text-turquesa-700"
