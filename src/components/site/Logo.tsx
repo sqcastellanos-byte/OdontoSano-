@@ -10,15 +10,15 @@ export function LogoMark({ className = "" }: { className?: string }) {
 
 export function Logo({
   className = "",
-  markClass = "h-9 w-auto",
-  wordClass = "h-[1.15rem] w-auto",
+  markClass = "h-11 w-auto",
+  wordClass = "h-[1.45rem] w-auto",
 }: {
   className?: string;
   markClass?: string;
   wordClass?: string;
 }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+    <span className={`inline-flex items-center gap-3 ${className}`}>
       <img src="/logo-mark.svg" alt="" aria-hidden className={markClass} />
       <img src="/logo-word.svg" alt="OdontoSano" className={wordClass} />
     </span>
