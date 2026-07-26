@@ -4,10 +4,9 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
-// Hero de scroll-expansión: una fotografía enmarcada que crece hasta llenar la
-// pantalla a medida que haces scroll, con el mensaje sobre ella.
-// La imagen se toma de /hero.jpg; si aún no existe, se muestra un fondo de marca.
-// Respeta "menos movimiento": si está activo, se ve estática y a pantalla completa.
+// Hero de scroll-expansión: la fotografía llena la pantalla al abrir y se
+// expande hasta el borde a medida que haces scroll. El mensaje va a la
+// izquierda, sobre el área despejada de la foto. Respeta "menos movimiento".
 
 export function ScrollExpandHero({
   imagen = "/hero.jpg",
@@ -30,22 +29,47 @@ export function ScrollExpandHero({
 
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
   const radius = useTransform(scrollYProgress, [0, 0.5], [20, 0]);
-  const overlay = useTransform(scrollYProgress, [0, 0.5], [0.34, 0.5]);
 
   const mediaStyle: React.CSSProperties = {
     backgroundColor: "var(--color-turquesa-700)",
-    backgroundImage: `linear-gradient(160deg, rgba(0,120,105,.35), rgba(0,65,127,.35)), url('${imagen}')`,
+    backgroundImage: `url('${imagen}')`,
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: "center right",
   };
+
+  // Velo oscuro a la izquierda para que el texto blanco sea legible,
+  // dejando la parte derecha (las caras) natural y luminosa.
+  const scrim =
+    "linear-gradient(90deg, rgba(6,18,16,.74) 0%, rgba(6,18,16,.5) 32%, rgba(6,18,16,.12) 58%, rgba(6,18,16,0) 78%)";
+
+  const Copy = (
+    <div className="mx-auto flex h-full w-full max-w-6xl items-center px-6 sm:px-10">
+      <div className="max-w-xl text-left text-white">
+        <h1 className="font-display text-4xl font-semibold leading-[1.05] drop-shadow-[0_2px_20px_rgba(0,0,0,.4)] sm:text-6xl lg:text-7xl">
+          {titulo}
+          <br />
+          <span className="text-turquesa-50">{acento}</span>
+        </h1>
+        <p className="mt-5 max-w-md text-base text-white/90 drop-shadow-[0_1px_12px_rgba(0,0,0,.4)] sm:text-lg">
+          {subtitulo}
+        </p>
+        <Link
+          href="#agendar"
+          className="mt-8 inline-flex h-12 items-center rounded-full bg-white px-7 text-[15px] font-semibold text-turquesa-700 shadow-lg transition-transform hover:-translate-y-0.5"
+        >
+          Agendar valoración
+        </Link>
+      </div>
+    </div>
+  );
 
   // Versión sin movimiento: foto a pantalla completa, contenido visible.
   if (reduce) {
     return (
       <section className="relative h-[92svh] min-h-[560px] w-full overflow-hidden">
         <div className="absolute inset-0" style={mediaStyle} />
-        <div className="absolute inset-0 bg-black/40" />
-        <HeroCopy titulo={titulo} acento={acento} subtitulo={subtitulo} />
+        <div className="absolute inset-0" style={{ background: scrim }} />
+        <div className="absolute inset-0">{Copy}</div>
       </section>
     );
   }
@@ -59,63 +83,14 @@ export function ScrollExpandHero({
           style={{ scale, borderRadius: radius }}
         >
           <div className="absolute inset-0" style={mediaStyle} />
-          <motion.div
-            className="absolute inset-0 bg-black"
-            style={{ opacity: overlay }}
-          />
+          <div className="absolute inset-0" style={{ background: scrim }} />
         </motion.div>
 
         {/* Mensaje sobre la foto */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="pointer-events-auto px-6 text-center text-white">
-            <h1 className="font-display text-3xl font-semibold leading-[1.06] drop-shadow-[0_2px_18px_rgba(0,0,0,.4)] sm:text-5xl lg:text-6xl">
-              {titulo}
-              <br />
-              <span className="text-turquesa-50">{acento}</span>
-            </h1>
-            <p className="mx-auto mt-5 max-w-lg text-base text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,.35)] sm:text-lg">
-              {subtitulo}
-            </p>
-            <Link
-              href="#agendar"
-              className="mt-7 inline-flex h-12 items-center rounded-full bg-white px-7 text-[15px] font-semibold text-turquesa-700 shadow-lg transition-transform hover:-translate-y-0.5"
-            >
-              Agendar valoración
-            </Link>
-          </div>
+        <div className="pointer-events-none absolute inset-0">
+          <div className="pointer-events-auto h-full">{Copy}</div>
         </div>
       </div>
     </section>
-  );
-}
-
-function HeroCopy({
-  titulo,
-  acento,
-  subtitulo,
-}: {
-  titulo: string;
-  acento: string;
-  subtitulo: string;
-}) {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center px-5 text-center text-white">
-      <div>
-        <h1 className="font-display text-4xl font-semibold leading-[1.05] sm:text-6xl">
-          {titulo}
-          <br />
-          <span className="text-turquesa-50">{acento}</span>
-        </h1>
-        <p className="mx-auto mt-5 max-w-xl text-base text-white/90 sm:text-lg">
-          {subtitulo}
-        </p>
-        <Link
-          href="#agendar"
-          className="mt-7 inline-flex h-12 items-center rounded-full bg-white px-7 text-[15px] font-semibold text-turquesa-700 shadow-lg"
-        >
-          Agendar valoración
-        </Link>
-      </div>
-    </div>
   );
 }
