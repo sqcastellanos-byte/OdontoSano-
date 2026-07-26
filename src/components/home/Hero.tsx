@@ -2,7 +2,6 @@ import Link from "next/link";
 import { STATS } from "@/data/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
-import { PhotoPlaceholder } from "@/components/site/PhotoPlaceholder";
 
 export function Hero() {
   return (
@@ -63,22 +62,16 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* Columna de reserva: foto + formulario */}
+        {/* Columna de reserva: formulario */}
         <Reveal delay={0.15} className="relative" id="agendar">
-          <div className="relative overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-white shadow-suave">
-            <PhotoPlaceholder
-              className="aspect-[16/10] w-full"
-              etiqueta="Foto real: paciente sonriendo con luz natural"
-            />
-            <div className="p-6 sm:p-7">
-              <h2 className="font-display text-xl font-semibold text-tinta">
-                Agenda en 30 segundos
-              </h2>
-              <p className="mb-4 mt-1 text-sm text-tinta-suave">
-                Cuéntanos y te contactamos por tu sede más cercana.
-              </p>
-              <AppointmentForm compact />
-            </div>
+          <div className="rounded-[var(--radius-marca)] border border-linea bg-white p-6 shadow-suave sm:p-8">
+            <h2 className="font-display text-2xl font-semibold text-tinta">
+              Agenda en 30 segundos
+            </h2>
+            <p className="mb-5 mt-1.5 text-sm text-tinta-suave">
+              Cuéntanos y te contactamos por tu sede más cercana.
+            </p>
+            <AppointmentForm compact />
           </div>
         </Reveal>
       </div>

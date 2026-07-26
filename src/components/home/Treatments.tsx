@@ -24,7 +24,7 @@ export async function Treatments() {
 
       {/* Retícula editorial: separadores de línea fina, sin tarjetas ni sombras */}
       <Reveal delay={0.05}>
-        <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-linea sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-linea md:grid-cols-3">
           {TRATAMIENTOS.map((t) => (
             <li key={t.slug} className="bg-crema">
               <Link
