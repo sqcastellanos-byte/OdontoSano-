@@ -33,7 +33,7 @@ export default function SedesPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {SEDES.map((s, i) => (
             <Reveal key={s.slug} delay={(i % 2) * 0.08}>
-              <div className="flex h-full flex-col overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-white shadow-suave transition-all duration-300 hover:-translate-y-1 hover:shadow-tarjeta">
+              <div className="flex h-full flex-col overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-white transition-colors duration-300 hover:border-turquesa-100">
                 <PhotoPlaceholder
                   className="aspect-[16/9] w-full"
                   etiqueta={`Foto de la sede ${s.ciudad}`}

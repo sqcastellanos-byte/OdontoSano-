@@ -29,26 +29,27 @@ export default function EquipoPage() {
           </p>
         </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {EQUIPO.map((doc, i) => (
             <Reveal key={i} delay={(i % 3) * 0.06}>
-              <div className="flex h-full flex-col overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-white shadow-suave transition-all duration-300 hover:-translate-y-1 hover:shadow-tarjeta">
+              <figure className="group flex flex-col">
                 <PhotoPlaceholder
-                  className="aspect-[4/5] w-full"
+                  className="aspect-[4/5] w-full rounded-[var(--radius-marca)] border border-linea"
                   etiqueta="Foto del profesional"
                 />
-                <div className="p-6">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-turquesa-700">
-                    {doc.sede}
-                  </span>
-                  <h2 className="font-display mt-1 text-xl font-semibold text-tinta">
+                <figcaption className="mt-4">
+                  <h2 className="font-display text-lg font-semibold leading-snug text-tinta">
                     {doc.nombre}
                   </h2>
-                  <p className="mt-1 text-sm text-tinta-suave">
+                  <p className="mt-0.5 text-sm text-tinta-suave">
                     {doc.especialidad}
                   </p>
-                </div>
-              </div>
+                  <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-turquesa-700">
+                    <span className="h-1 w-1 rounded-full bg-turquesa" />
+                    {doc.sede}
+                  </p>
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
         </div>

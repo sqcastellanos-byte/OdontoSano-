@@ -78,7 +78,7 @@ export function Hero() {
 
         {/* Columna de reserva: foto + formulario */}
         <Reveal delay={0.15} className="relative" id="agendar">
-          <div className="relative overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-white shadow-tarjeta">
+          <div className="relative overflow-hidden rounded-[var(--radius-marca)] border border-linea bg-white shadow-suave">
             <PhotoPlaceholder
               className="aspect-[16/10] w-full"
               etiqueta="Foto real: paciente sonriendo con luz natural"
