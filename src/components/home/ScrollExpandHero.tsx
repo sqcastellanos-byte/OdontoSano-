@@ -28,9 +28,9 @@ export function ScrollExpandHero({
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.55], [0.6, 1]);
-  const radius = useTransform(scrollYProgress, [0, 0.55], [30, 0]);
-  const overlay = useTransform(scrollYProgress, [0, 0.55], [0.3, 0.52]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
+  const radius = useTransform(scrollYProgress, [0, 0.5], [20, 0]);
+  const overlay = useTransform(scrollYProgress, [0, 0.5], [0.34, 0.5]);
 
   const mediaStyle: React.CSSProperties = {
     backgroundColor: "var(--color-turquesa-700)",
