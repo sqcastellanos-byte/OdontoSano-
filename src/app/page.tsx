@@ -1,4 +1,4 @@
-import { ScrollExpandHero } from "@/components/home/ScrollExpandHero";
+import { BannerHero } from "@/components/home/BannerHero";
 import { Hero } from "@/components/home/Hero";
 import { Treatments } from "@/components/home/Treatments";
 import { CasesTeaser } from "@/components/home/CasesTeaser";
@@ -8,7 +8,7 @@ import { CtaBand } from "@/components/home/CtaBand";
 export default function Home() {
   return (
     <>
-      <ScrollExpandHero />
+      <BannerHero />
       <Hero />
       <Treatments />
       <CasesTeaser />
